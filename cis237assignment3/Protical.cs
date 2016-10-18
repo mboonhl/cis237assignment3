@@ -18,13 +18,14 @@ namespace cis237assignment3
         public Protical(string _model, string _material, string _color, int _numbLanguages) : base(_model,_material, _color)
         {
             numberOfLanguages = _numbLanguages;
+            CalculateTotalCost();
         }
 
         //Empty Constructor
         public Protical() { }
 
         //Methods
-        public override string ToString() 
+        public override string ToString()
         {
             return base.ToString() + Environment.NewLine + "Number of Languages: " + numberOfLanguages;
         }
@@ -33,7 +34,7 @@ namespace cis237assignment3
         public override void CalculateTotalCost()
         {
             base.CalculateTotalCost();
-            TotalCost += (numberOfLanguages * CostPerLanguage);
+            totalCostDecimal += (numberOfLanguages * CostPerLanguage);
         }
     }
 }

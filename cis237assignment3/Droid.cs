@@ -13,7 +13,7 @@ namespace cis237assignment3
         private string modelString;
         private string colorString;
         private decimal baseCostDecimal;
-        private decimal totalCostDecimal;
+        public decimal totalCostDecimal;
 
         //Properties
         public decimal TotalCost
@@ -40,7 +40,7 @@ namespace cis237assignment3
         //Overrides ToString method to return droid values
         public override string ToString()
         {
-            return "Model: " + modelString + Environment.NewLine + "Material: " + materialString + Environment.NewLine + "Color: " + colorString
+            return Environment.NewLine + Environment.NewLine + "Model: " + modelString + Environment.NewLine + "Material: " + materialString + Environment.NewLine + "Color: " + colorString
                 + Environment.NewLine + "Base Cost: " + baseCostDecimal + Environment.NewLine + "Total Cost: " + totalCostDecimal;
         }
 

@@ -36,17 +36,19 @@ namespace cis237assignment3
 
         public override void CalculateTotalCost()
         {
-            if(toolboxBool)
+            base.CalculateTotalCost();
+
+            if (toolboxBool)
             {
-                TotalCost += 50m;
+                totalCostDecimal += 50m;
             }
             if(computerConnectionBool)
             {
-                TotalCost += 50m;
+                totalCostDecimal += 50m;
             }
             if(armBool)
             {
-                TotalCost += 50m;
+                totalCostDecimal += 50m;
             }
         }
 

@@ -23,7 +23,7 @@ namespace cis237assignment3
         //Empty Constructor to call loop for user input
         public UserInterface()
         {
-
+            UserInput();
         }
 
         //Method to loop through user options
@@ -33,6 +33,7 @@ namespace cis237assignment3
 
             while (choice != 3)
             {
+                Console.WriteLine();
                 Console.WriteLine("1.Add New Droid");
                 Console.WriteLine("2.Print Droid List");
                 Console.WriteLine("3.Exit");
@@ -49,7 +50,7 @@ namespace cis237assignment3
                             break;
 
                         case 2:
-                            DroidCollection.PrintDroids();
+                            Droids.PrintDroids();
                             break;
 
                         case 3:
@@ -71,43 +72,52 @@ namespace cis237assignment3
         private void AddDroid(DroidCollection Droids)
         {
             int choice;
+            bool exit = false;
 
+            Console.WriteLine();
             Console.WriteLine("What kind of droid would you like to add?");
             Console.WriteLine("1.Protical");
             Console.WriteLine("2.Utility");
             Console.WriteLine("3.Janitor");
             Console.WriteLine("4.AstroMech");
 
-            try
+            while (exit != true)
             {
-                choice = Int32.Parse(Console.ReadLine());
-
-                switch(choice)
+                try
                 {
-                    case 1:
-                        AddProtical();
-                        break;
+                    choice = Int32.Parse(Console.ReadLine());
 
-                    case 2:
-                        AddUtility();
-                        break;
+                    switch (choice)
+                    {
+                        case 1:
+                            AddProtical();
+                            exit = true;
+                            break;
 
-                    case 3:
-                        AddJanitor();
-                        break;
+                        case 2:
+                            AddUtility();
+                            exit = true;
+                            break;
 
-                    case 4:
-                        AddAstromech();
-                        break;
+                        case 3:
+                            AddJanitor();
+                            exit = true;
+                            break;
 
-                    default:
-                        InvalidChoice();
-                        break;
+                        case 4:
+                            AddAstromech();
+                            exit = true;
+                            break;
+
+                        default:
+                            InvalidChoice();
+                            break;
+                    }
                 }
-            }
-            catch
-            {
-                InvalidChoice();
+                catch
+                {
+                    InvalidChoice();
+                }
             }
 
         }
@@ -115,25 +125,39 @@ namespace cis237assignment3
         private void AddProtical()
         {
             bool langBool = false;
+            int langInt = 0;
+
             modelString = "Protical";
             materialString = MaterialQuestion();
             colorString = ColorQuestion();
             
-            Console.WriteLine("How many languages would you like the droid to know? 1-10");
-            while(langBool != true)
-            try
+            Console.WriteLine();
+            Console.WriteLine("How many languages would you like the droid to know? Greater than one");
+            while (langBool != true)
             {
-                int langInt = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    langInt = Int32.Parse(Console.ReadLine());
 
-                    if (langInt < 1 && langInt > 10)
-                        InvalidChoice();
-                    else
+                    if (langInt > 0)
+                    {
                         langBool = true;
-            }
+                       
+                    }
+                    else
+                    {
+                        InvalidChoice();
+                    }
+                }
                 catch
                 {
                     InvalidChoice();
                 }
+            }
+
+            Droids.NewDroid(modelString, materialString, colorString, langInt);
+            Console.WriteLine("You have added a new droid");
+            Console.WriteLine();
 
         }
 
@@ -146,7 +170,9 @@ namespace cis237assignment3
             compConnectionBool = ComputerQ();
             armBool = ArmQ();
 
-
+            Droids.NewDroid(modelString, materialString, colorString, toolboxBool, compConnectionBool, armBool);
+            Console.WriteLine("You have added a new droid");
+            Console.WriteLine();
         }
 
         private void AddJanitor()
@@ -160,11 +186,15 @@ namespace cis237assignment3
             bool trashBool = TrashQ();
             bool vacuumBool = VacuumQ();
 
+            Droids.NewDroid(modelString, materialString, colorString, toolboxBool, compConnectionBool, armBool, trashBool, vacuumBool);
+            Console.WriteLine("You have added a new droid");
+            Console.WriteLine();
         }
 
         private void AddAstromech()
         {
             bool done = false;
+            int shipsInt = 0;
 
             modelString = "Astromech";
             materialString = MaterialQuestion();
@@ -174,14 +204,14 @@ namespace cis237assignment3
             armBool = ArmQ();
             bool fireBool = FireQ();
 
-
+            Console.WriteLine();
             Console.WriteLine("How many ships would you like the droid to have? Must be one or greater");
             while (done != true)
                 try
                 {
-                    int langInt = Int32.Parse(Console.ReadLine());
+                    shipsInt = Int32.Parse(Console.ReadLine());
 
-                    if (langInt < 1)
+                    if (shipsInt < 1)
                         InvalidChoice();
                     else
                         done = true;
@@ -190,6 +220,10 @@ namespace cis237assignment3
                 {
                     InvalidChoice();
                 }
+
+            Droids.NewDroid(modelString, materialString, colorString, toolboxBool, compConnectionBool, armBool, fireBool, shipsInt);
+            Console.WriteLine("You have added a new droid");
+            Console.WriteLine();
 
         }
 
@@ -200,6 +234,7 @@ namespace cis237assignment3
             string String = "";
             bool done = true;
 
+            Console.WriteLine();
             Console.WriteLine("What material would you like the droid to be made of?");
             Console.WriteLine("1.Cantium");
             Console.WriteLine("2.Berilium");
@@ -245,6 +280,7 @@ namespace cis237assignment3
             string String = "";
             bool done = true;
 
+            Console.WriteLine();
             Console.WriteLine("What color would you like the droid to be?");
             Console.WriteLine("1.Red");
             Console.WriteLine("2.Blue");
@@ -288,7 +324,9 @@ namespace cis237assignment3
         {
             bool exit = false;
             bool qBool = false;
+            int choice = 0;
 
+            Console.WriteLine();
             Console.WriteLine("Does the droid have a toolbox?");
             Console.WriteLine("1.Yes");
             Console.WriteLine("2.No");
@@ -296,14 +334,20 @@ namespace cis237assignment3
             while(exit != true)
                 try
                 {
-                    int choice = Int32.Parse(Console.ReadLine());
+                    choice = Int32.Parse(Console.ReadLine());
 
                     if (choice == 1 || choice == 2)
                     {
                         if (choice == 1)
+                        {
                             qBool = true;
+                            exit = true;
+                        }
                         if (choice == 2)
+                        {
                             qBool = false;
+                            exit = true;
+                        }
                     }
                     else
                         InvalidChoice();
@@ -320,6 +364,7 @@ namespace cis237assignment3
             bool exit = false;
             bool qBool = false;
 
+            Console.WriteLine();
             Console.WriteLine("Does the droid have a computer connection?");
             Console.WriteLine("1.Yes");
             Console.WriteLine("2.No");
@@ -332,9 +377,15 @@ namespace cis237assignment3
                     if (choice == 1 || choice == 2)
                     {
                         if (choice == 1)
+                        {
                             qBool = true;
+                            exit = true;
+                        }
                         if (choice == 2)
+                        {
                             qBool = false;
+                            exit = true;
+                        }
                     }
                     else
                         InvalidChoice();
@@ -351,6 +402,7 @@ namespace cis237assignment3
             bool exit = false;
             bool qBool = false;
 
+            Console.WriteLine();
             Console.WriteLine("Does the droid have an arm?");
             Console.WriteLine("1.Yes");
             Console.WriteLine("2.No");
@@ -363,9 +415,15 @@ namespace cis237assignment3
                     if (choice == 1 || choice == 2)
                     {
                         if (choice == 1)
+                        {
                             qBool = true;
+                            exit = true;
+                        }
                         if (choice == 2)
+                        {
                             qBool = false;
+                            exit = true;
+                        }
                     }
                     else
                         InvalidChoice();
@@ -382,6 +440,7 @@ namespace cis237assignment3
             bool exit = false;
             bool qBool = false;
 
+            Console.WriteLine();
             Console.WriteLine("Does the droid have a Vacuum?");
             Console.WriteLine("1.Yes");
             Console.WriteLine("2.No");
@@ -394,9 +453,15 @@ namespace cis237assignment3
                     if (choice == 1 || choice == 2)
                     {
                         if (choice == 1)
+                        {
                             qBool = true;
+                            exit = true;
+                        }
                         if (choice == 2)
+                        {
                             qBool = false;
+                            exit = true;
+                        }
                     }
                     else
                         InvalidChoice();
@@ -413,6 +478,7 @@ namespace cis237assignment3
             bool exit = false;
             bool qBool = false;
 
+            Console.WriteLine();
             Console.WriteLine("Does the droid have a trash compactor?");
             Console.WriteLine("1.Yes");
             Console.WriteLine("2.No");
@@ -425,9 +491,15 @@ namespace cis237assignment3
                     if (choice == 1 || choice == 2)
                     {
                         if (choice == 1)
+                        {
                             qBool = true;
+                            exit = true;
+                        }
                         if (choice == 2)
+                        {
                             qBool = false;
+                            exit = true;
+                        }
                     }
                     else
                         InvalidChoice();
@@ -444,6 +516,7 @@ namespace cis237assignment3
             bool exit = false;
             bool qBool = false;
 
+            Console.WriteLine();
             Console.WriteLine("Does the droid have a fire extinguisher?");
             Console.WriteLine("1.Yes");
             Console.WriteLine("2.No");
@@ -456,9 +529,15 @@ namespace cis237assignment3
                     if (choice == 1 || choice == 2)
                     {
                         if (choice == 1)
+                        {
                             qBool = true;
+                            exit = true;
+                        }
                         if (choice == 2)
+                        {
                             qBool = false;
+                            exit = true;
+                        }
                     }
                     else
                         InvalidChoice();

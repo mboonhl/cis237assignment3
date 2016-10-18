@@ -2,6 +2,7 @@
 ## Due: 10-18-2016
 
 ## Author
+## Morgan  Boon
 
 
 
@@ -114,7 +115,8 @@ It may be beneficial for you to create extra methods within the droid sub classe
 | Total                      | 100    |
 
 ## Outside Resources Used
-
+## www.c-sharpcorner.com
 
 
 ## Known Problems, Issues, And/Or Errors in the Program
+## None

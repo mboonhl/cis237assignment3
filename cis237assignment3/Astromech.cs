@@ -31,18 +31,22 @@ namespace cis237assignment3
         //Methods
         public override string ToString()
         {
-            return base.ToString() + Environment.NewLine + "Fire Extinguisher: " + fireExtinguisherBool + Environment.NewLine + "Number of ships: " + numberOfShipsInt;
+            return base.ToString() + Environment.NewLine + "Fire Extinguisher: " + fireExtinguisherBool +
+                   Environment.NewLine + "Number of ships: " + numberOfShipsInt;
+
         }
 
         public override void CalculateTotalCost()
         {
-            if(fireExtinguisherBool)
+            base.CalculateTotalCost();
+
+            if (fireExtinguisherBool)
             {
-                TotalCost += 50m;
+                totalCostDecimal += 50m;
             }
             if(numberOfShipsInt != 0)
             {
-                TotalCost += (numberOfShipsInt * CostPerShip);
+                totalCostDecimal += (numberOfShipsInt * CostPerShip);
             }
         }
 

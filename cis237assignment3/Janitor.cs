@@ -28,18 +28,22 @@ namespace cis237assignment3
         //Methods
         public override string ToString()
         {
-            return base.ToString() + Environment.NewLine + "Trash Compactor: " + trashCompactorBool + Environment.NewLine + " Vacuum: " + vacuumBool;
+            return base.ToString() + Environment.NewLine + "Trash Compactor: " + trashCompactorBool +
+                   Environment.NewLine + " Vacuum: " + vacuumBool;
+
         }
 
         public override void CalculateTotalCost()
         {
-            if(trashCompactorBool)
+            base.CalculateTotalCost();
+
+            if (trashCompactorBool)
             {
-                TotalCost += 50m;
+                totalCostDecimal += 50m;
             }
             if(vacuumBool)
             {
-                TotalCost += 50m;
+                totalCostDecimal += 50m;
             }
         }
 
