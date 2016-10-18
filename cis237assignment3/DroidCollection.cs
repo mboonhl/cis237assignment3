@@ -8,6 +8,10 @@ namespace cis237assignment3
 {
     class DroidCollection
     {
+        //Instantiate the array of droids
+        IDroid[] droidarray = new Droid[5000];
+
+
 
     }
 }
