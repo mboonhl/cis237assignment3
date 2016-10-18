@@ -13,7 +13,7 @@ namespace cis237assignment3
         protected bool computerConnectionBool;
         protected bool armBool;
 
-        //Constructors
+        //Constructor with relation to parent class
         public Utility(string _model, string _material, string _color, bool _toolbox, bool _computerConnection, bool _arm) : base(_model, _material, _color)
         {
             toolboxBool = _toolbox;
@@ -27,6 +27,8 @@ namespace cis237assignment3
         public Utility() { }
 
         //Methods
+
+        //Override to string to add varibales for the class
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine + "Toolbox: " + toolboxBool + Environment.NewLine + "Computer Connection: " + computerConnectionBool +
@@ -34,6 +36,7 @@ namespace cis237assignment3
 
         }
 
+        //Override for Calculate total to add in variables for the class
         public override void CalculateTotalCost()
         {
             base.CalculateTotalCost();

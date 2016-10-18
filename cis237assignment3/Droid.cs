@@ -49,6 +49,7 @@ namespace cis237assignment3
         {
             baseCostDecimal = 0;
 
+            //Case structor to change cost based on droid type
             switch(modelString)
             {
                 case "Protical":
@@ -68,6 +69,7 @@ namespace cis237assignment3
                     break;                    
             }
 
+            //case structor to change cost of droid depending on material
             switch(materialString)
             {
                 case "Cantium":

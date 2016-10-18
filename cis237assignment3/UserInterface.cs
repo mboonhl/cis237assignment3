@@ -43,6 +43,7 @@ namespace cis237assignment3
                 {
                     choice = Int32.Parse(Console.ReadLine());
 
+                    //case stuctor to call method depending on user input
                     switch (choice)
                     {
                         case 1:
@@ -69,6 +70,7 @@ namespace cis237assignment3
 
         }
 
+        //AddDroid method begins the questions for adding the droid
         private void AddDroid(DroidCollection Droids)
         {
             int choice;
@@ -87,6 +89,7 @@ namespace cis237assignment3
                 {
                     choice = Int32.Parse(Console.ReadLine());
 
+                    //Case structor to call method depending on droid
                     switch (choice)
                     {
                         case 1:
@@ -122,6 +125,8 @@ namespace cis237assignment3
 
         }
 
+
+        //Method to add Protical droid incluuding questipns for droid variables
         private void AddProtical()
         {
             bool langBool = false;
@@ -155,12 +160,14 @@ namespace cis237assignment3
                 }
             }
 
+            //Pass droid values to the Droid Collection class
             Droids.NewDroid(modelString, materialString, colorString, langInt);
             Console.WriteLine("You have added a new droid");
             Console.WriteLine();
 
         }
 
+        //Method to add Utility droid including variable questions
         private void AddUtility()
         {
             modelString = "Utility";
@@ -175,6 +182,7 @@ namespace cis237assignment3
             Console.WriteLine();
         }
 
+        //Method to add Janitor droid including variable questions
         private void AddJanitor()
         {
             modelString = "Janitor";
@@ -191,6 +199,7 @@ namespace cis237assignment3
             Console.WriteLine();
         }
 
+        //Method to add Astromech droid including variable questions
         private void AddAstromech()
         {
             bool done = false;
@@ -227,10 +236,9 @@ namespace cis237assignment3
 
         }
 
-
+        //Question for material type
         private string MaterialQuestion()
         {
-            int choice;
             string String = "";
             bool done = true;
 
@@ -243,7 +251,7 @@ namespace cis237assignment3
             while(done)
             try
             {
-                choice = Int32.Parse(Console.ReadLine());
+                int choice = Int32.Parse(Console.ReadLine());
 
                 switch(choice)
                 {
@@ -274,9 +282,9 @@ namespace cis237assignment3
             return String;
         }
 
+        //Question for color
         private string ColorQuestion()
         {
-            int choice;
             string String = "";
             bool done = true;
 
@@ -289,7 +297,7 @@ namespace cis237assignment3
             while (done)
                 try
                 {
-                    choice = Int32.Parse(Console.ReadLine());
+                    int  choice = Int32.Parse(Console.ReadLine());
 
                     switch (choice)
                     {
@@ -320,11 +328,11 @@ namespace cis237assignment3
             return String;
         }
 
+        //Question for toolbox
         private bool ToolboxQ()
         {
             bool exit = false;
             bool qBool = false;
-            int choice = 0;
 
             Console.WriteLine();
             Console.WriteLine("Does the droid have a toolbox?");
@@ -334,7 +342,7 @@ namespace cis237assignment3
             while(exit != true)
                 try
                 {
-                    choice = Int32.Parse(Console.ReadLine());
+                    int choice = Int32.Parse(Console.ReadLine());
 
                     if (choice == 1 || choice == 2)
                     {
@@ -359,6 +367,7 @@ namespace cis237assignment3
             return qBool;
         }
 
+        //Question for computer connection
         private bool ComputerQ()
         {
             bool exit = false;
@@ -397,6 +406,7 @@ namespace cis237assignment3
             return qBool;
         }
 
+        //Question for arm
         private bool ArmQ()
         {
             bool exit = false;
@@ -435,6 +445,7 @@ namespace cis237assignment3
             return qBool;
         }
 
+        //Question for vacuum
         private bool VacuumQ()
         {
             bool exit = false;
@@ -473,6 +484,7 @@ namespace cis237assignment3
             return qBool;
         }
 
+        //Question for trash compactor
         private bool TrashQ()
         {
             bool exit = false;
@@ -511,6 +523,7 @@ namespace cis237assignment3
             return qBool;
         }
 
+        //Question for Fire Extingusher
         private bool FireQ()
         {
             bool exit = false;
@@ -549,10 +562,11 @@ namespace cis237assignment3
             return qBool;
         }
 
+        //Method to print invalid choice message
         private void InvalidChoice()
     {
-        Console.WriteLine("Input is not a valid option. Try Again.");
-        Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Input is not a valid option. Try Again.");
     }
 
 

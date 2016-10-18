@@ -12,7 +12,7 @@ namespace cis237assignment3
         private bool trashCompactorBool;
         private bool vacuumBool;
 
-        //Constuctors
+        //Constuctor with relation to parent class
         public Janitor(string _model, string _material, string _color, bool _toolbox, bool _computerConnection, bool _arm, bool _trashCompactor, bool _vacuum) :
             base(_model, _material, _color, _toolbox, _computerConnection, _arm)
         {
@@ -26,6 +26,8 @@ namespace cis237assignment3
         public Janitor() { }
 
         //Methods
+
+        //Override to string to add varibales for the class
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine + "Trash Compactor: " + trashCompactorBool +
@@ -33,6 +35,7 @@ namespace cis237assignment3
 
         }
 
+        //Override for Calculate total to add in variables for the class
         public override void CalculateTotalCost()
         {
             base.CalculateTotalCost();

@@ -14,7 +14,7 @@ namespace cis237assignment3
         //Constants
         const decimal CostPerLanguage = 20m;
 
-        //Constructors
+        //Constructor with relation to parent class
         public Protical(string _model, string _material, string _color, int _numbLanguages) : base(_model,_material, _color)
         {
             numberOfLanguages = _numbLanguages;
@@ -25,6 +25,8 @@ namespace cis237assignment3
         public Protical() { }
 
         //Methods
+
+        //Override to string to add varibales for the class
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine + "Number of Languages: " + numberOfLanguages;

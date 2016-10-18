@@ -15,7 +15,7 @@ namespace cis237assignment3
         //Constant
         const decimal CostPerShip = 100m;
 
-        //Constuctors
+        //Constuctors with relation to parent class
         public Astromech(string _model, string _material, string _color, bool _toolbox, bool _computerConnection, bool _arm, bool _fireExtinguisher, int _ships) :
             base(_model, _material, _color, _toolbox, _computerConnection, _arm)
         {
@@ -29,6 +29,8 @@ namespace cis237assignment3
         public Astromech() { }
 
         //Methods
+
+        //Override to string to add varibales for the class
         public override string ToString()
         {
             return base.ToString() + Environment.NewLine + "Fire Extinguisher: " + fireExtinguisherBool +
@@ -36,6 +38,7 @@ namespace cis237assignment3
 
         }
 
+        //Override for Calculate total to add in variables for the class
         public override void CalculateTotalCost()
         {
             base.CalculateTotalCost();
